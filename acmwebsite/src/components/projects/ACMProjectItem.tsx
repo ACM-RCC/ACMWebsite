@@ -8,7 +8,8 @@ type ACMProjectItemProps = {
 };
 
 export default function ACMProjectItem({acmProject}: ACMProjectItemProps) {
-    // TODO(project_page): Update this component 
+    // TODO(project_page): Update this component once we figure out the other properties
+    // that a ACM Project has
     
     return (
         // relative - positions element relative to normal flow

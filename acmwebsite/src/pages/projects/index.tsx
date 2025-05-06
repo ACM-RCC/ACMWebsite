@@ -18,8 +18,10 @@ export default function ProjectPage() {
 
     return (
         <div
-            // tailwind styles go here
-            className="min-h-screen sm:p-2 font-[family-name:var(--font-geist-sans)]"
+            // Tailwind styles:
+            // min-h-screen: sets the minimum height of the div to the full height of the viewport
+            // sm:p-2: adds padding of 0.5rem on all sides, but only on small screens and up (sm = ≥640px)
+            className="min-h-screen sm:p-2"
         >
             <ACMProjectList acmProjects={projects}/>
             {/*content goes here*/}
