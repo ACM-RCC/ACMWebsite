@@ -3,15 +3,32 @@
 // import types and functions used for the component here
 import { ACMProject } from "@/lib/types/project";
 import ACMProjectItem from "@/components/projects/ACMProjectItem";
+import { useEffect, useState } from "react";
+import { fetchProjects } from "@/lib/client/project";
 
 
-type ACMProjectListProps = {
-    // contains the list of ACMProjects that this component shows
-    acmProjects: ACMProject[]
-};
+export default function ACMProjectList() {
+    const [acmProjects, setACMProjects] = useState<ACMProject[]>([]);
+    const [error, setError] = useState<string | null>(null);
 
-export default function ACMProjectList({acmProjects}: ACMProjectListProps) {
-    // TODO(project_page): Add tailwind styling based on the website theme
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await fetchProjects();
+                console.log(data);
+                setACMProjects(data);
+            } catch (err) {
+                console.error("Error fetching replay data:", err);
+                setError("Error loading project data.");
+            }
+        };
+
+        fetchData();
+    }, []); 
+
+    if (error) {
+        return <div>{error}</div>;
+    }
    
     return (
         // grid - uses CSS grid layout
