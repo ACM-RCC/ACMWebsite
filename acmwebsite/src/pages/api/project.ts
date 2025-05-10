@@ -9,12 +9,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === "POST") {
         try {
             const projects: ACMProject[] = req.body;
-            const writes = projects.map((project) =>
-                setDoc(doc(db, "projects", project.id), project)
-            );
+            const collectionRef = collection(db, "projects");
+            const writes = projects.map((project) => {
+                // auto generate id
+                const newDocRef = doc(collectionRef); 
+                return setDoc(newDocRef, { ...project, id: newDocRef.id });
+            });
+            
             await Promise.all(writes);
             return res.status(200).json({ status: "saved", count: projects.length });
-        } catch {
+        } catch (err) {
+            console.error("POST /api/project error:", err);
             return res.status(500).json({ error: "Failed to save projects" });
         }
     }
