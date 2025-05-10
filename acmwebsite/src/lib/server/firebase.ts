@@ -26,6 +26,6 @@ if (typeof window !== 'undefined') {
     })
 }
 
-// export { analytics }
+export { analytics }
 export default firebase_app
 export const db = getFirestore(firebase_app);

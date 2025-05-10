@@ -38,7 +38,7 @@ export default function ACMProjectList() {
         // max-w-4xl - max width of 56rem
         // mx-auto - centers element horizontally
         // bg-gray-500 - light gray background
-        <div className="grid gap-1 sm:p-2 row-span-3 max-w-4xl mx-auto bg-gray-500">
+        <div className="grid gap-1 sm:p-2 row-span-3 max-w-4xl mx-auto">
             <>
             {/* foreach acmProject*/}
                 {acmProjects.map((acmProject) => (

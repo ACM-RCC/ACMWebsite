@@ -4,5 +4,6 @@
 // create a type for each of those projects 
 export type ACMProject = {
     id: string,
-    projectName: string
+    projectName: string,
+    projectDescription: string
 }

@@ -1,7 +1,6 @@
 // src/pages/projects/index.tsx
 
 import ACMProjectList from "@/components/projects/ACMProjectList";
-import { ACMProject } from "@/lib/types/project";
 
 export default function ProjectPage() {
     // TODO(project_page): Figure out the styling of the page
