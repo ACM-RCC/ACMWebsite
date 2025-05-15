@@ -9,6 +9,54 @@ pnpm dev
 # or
 bun dev
 ```
+---
+## Data (Client/Server)
+
+
+### 📁 `src/lib/server/firebase.ts`
+
+**Purpose:**  
+Initializes the Firebase app and Firestore instance.
+
+---
+
+### 📁 `src/pages/api/project.ts`
+
+**Purpose:**  
+Handles HTTP requests for ACM projects.
+
+**Key Functions:**
+- `GET`: Returns all projects or a single project by ID.
+- `POST`: Saves an array of project objects to Firestore.
+
+---
+
+### 📁 `src/pages/api/members.ts`
+
+**Purpose:**  
+Handles HTTP requests for ACM members.
+
+**Key Functions:**
+- `GET`: Returns all members or a single member by ID.
+- `POST`: Saves an array of member objects to Firestore.
+
+---
+
+### 📁 `src/lib/client/project.ts`
+
+**Purpose:**  
+Client-side utility to fetch project data.
+
+**Key Functions:**
+- `fetchProjects()`: Sends a `GET` request to `/api/project` and returns parsed data.
+---
+### 📁 `src/lib/client/members.ts`
+
+**Purpose:**  
+Client-side utility to fetch member data.
+
+**Key Functions:**
+- `fetchmemberss()`: Sends a `GET` request to `/api/members` and returns parsed data.
 
 ---
 ## Projects Page
@@ -55,6 +103,6 @@ Defines the TypeScript type for an ACM project.
 **Type Definition:**
 ```ts
 export type ACMProject = {
-    id: number,
+    id: string,
     projectName: string
 }
