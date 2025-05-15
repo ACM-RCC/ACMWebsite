@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Navbar = () => {
 	return (
-		<header className="text-slate-100 body-font">
+		<header className=" bg-black text-slate-100 body-font">
 			<div className="container mx-auto flex flex-wrap p-5 md:flex-row items-center justify-between">
 				<a className="flex font-medium items-center md:mb-0">
 					<Image
