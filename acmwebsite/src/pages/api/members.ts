@@ -1,25 +1,23 @@
-// src/pages/api/members.ts
+// src/pages/api/project.ts
 
 import type { NextApiRequest, NextApiResponse } from "next";
-import { db } from "@/lib/server/firebase"
+import { db } from "@/lib/server/firebase-admin"
 import { ACMMember } from "@/lib/types/members";
-import { doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === "POST") {
         try {
             const members: ACMMember[] = req.body;
-            
-            const collectionRef = collection(db, "members");
-            const writes = members.map((members) => {
-                // auto generate id
-                const newDocRef = doc(collectionRef); 
-                return setDoc(newDocRef, { ...members, id: newDocRef.id });
+            const batch = db.batch();
+            members.forEach((project) => {
+                const newDocRef = db.collection("members").doc(); // Admin SDK
+                batch.set(newDocRef, { ...project, id: newDocRef.id });
             });
-            await Promise.all(writes);
+
+            await batch.commit();
             return res.status(200).json({ status: "saved", count: members.length });
         } catch (err) {
-            console.error("POST /api/members error:", err);
+            console.error("POST /api/project error:", err);
             return res.status(500).json({ error: "Failed to save members" });
         }
     }
@@ -28,15 +26,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const { id } = req.query;
 
         if (typeof id === "string") {
-            const snap = await getDoc(doc(db, "members", id));
-            if (!snap.exists()) return res.status(404).json({ error: "Not found" });
-            return res.status(200).json(snap.data());
+            const docSnap = await db.collection("members").doc(id).get();
+            if (!docSnap.exists) return res.status(404).json({ error: "Not found" });
+            return res.status(200).json(docSnap.data());
         }
 
-        const snapshot = await getDocs(collection(db, "members"));
-        const allmembers = snapshot.docs.map((docSnap) => ({
-            id: docSnap.id,
-            ...docSnap.data(),
+        const snapshot = await db.collection("members").get();
+        const allmembers = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
         }));
         return res.status(200).json(allmembers);
     }
