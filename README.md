@@ -1,19 +1,89 @@
 # ACMWebsite
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Deployment Instructions
+
+### 1. Clone the repository
+
+    git clone --branch main --single-branch https://github.com/rkaganda/ACMWebsite
+    cd ACMWebsite
+
+### 2. Install Docker (if needed)
+
+    sudo apt update
+    sudo apt install docker.io
+
+### 3. Start Docker service
+
+    sudo systemctl enable docker
+    sudo systemctl start docker
+
+### 4. Build the Docker image
+
+    sudo docker build -t acmwebsite .
+
+### 5. Create Firebase credential file
+
+    nano acmwebsite-rcc-firebase-adminsdk-fbsvc-daed94830a.json
+
+Paste the Firebase credentials JSON into the file and save.
+
+### 6. Run the Docker container
+
+    sudo docker run -d -p 3000:3000 \
+      --name acmwebsite \
+      -v $(pwd)/acmwebsite-rcc-firebase-adminsdk-fbsvc-daed94830a.json:/usr/src/acmwebsite/acmwebsite-rcc-firebase-adminsdk-fbsvc-daed94830a.json \
+      acmwebsite
+
 ---
+
+## Nginx Configuration
+
+Create the Nginx config file:
+
+    sudo nano /etc/nginx/sites-available/acm-website
+
+Add the following content (update domain name and certificate paths as needed):
+
+    server {
+        listen 80;
+        server_name thedomain.com www.thedomain.com;
+
+        location / {
+            proxy_pass http://localhost:3000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name thedomain.com www.thedomain.com;
+
+        ssl_certificate /etc/path_to_the_cert/fullchain.pem;
+        ssl_certificate_key /etc/path_to_the_key/yourdomain.com/privkey.pem;
+
+        location / {
+            proxy_pass http://localhost:3000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    }
+
+
+
+---
+# Documentation
 ## Data (Client/Server)
 
-
-### 📁 `src/lib/server/firebase.ts`
+### 📁 `src/lib/server/firebase-admin.ts`
 
 **Purpose:**  
 Initializes the Firebase app and Firestore instance.
