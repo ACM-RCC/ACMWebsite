@@ -4,7 +4,7 @@
 
 ### 1. Clone the repository
 
-    git clone --branch main --single-branch https://github.com/rkaganda/ACMWebsite
+    git clone --branch main --single-branch https://github.com/ACM-RCC/ACMWebsite
     cd ACMWebsite
 
 ### 2. Install Docker (if needed)
