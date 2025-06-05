@@ -8,9 +8,9 @@ const Navbar = () => {
 			<div className="container mx-auto flex flex-wrap p-5 md:flex-row items-center justify-between">
 				<a className="flex font-medium items-center md:mb-0">
 					<Image
-						className="dark:invert"
-						src="/ACMsmiley.jpeg"
-						alt="Scuffed ACM temp logo"
+						className="transform transition-transform hover:scale-110 hover:animate-spin cursor-pointer"
+						src="/smiley.png"
+						alt="ACM temp logo"
 						width={50}
 						height={50}
 						priority
@@ -31,14 +31,14 @@ const Navbar = () => {
 								About
 							</span>
 						</Link>
-						<Link href="/contact">
+						<Link href="/">
 							<span className="flex mr-5 transform transition-transform hover:scale-110 cursor-pointer">
-								Contact
+								Members
 							</span>
 						</Link>
 					</nav>
 					<Link href="/projects">
-						<button className="inline-flex items-center border-orange-600 border-2 bg-white text-slate-900 font-semibold py-1 px-3 focus:outline-none hover:bg-orange-600 transform transition-transform hover:scale-110 hover:text-white rounded-lg text-base">
+						<button className="inline-flex items-center  bg-white text-slate-900 font-semibold py-1 px-3 focus:outline-none hover:bg-orange-600 transform transition-transform hover:scale-110 hover:text-white rounded-lg text-base">
 							Projects
 						</button>
 					</Link>
