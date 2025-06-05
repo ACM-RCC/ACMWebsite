@@ -7,8 +7,8 @@ const Footer = () => {
 			<div className="container px-5 py-8 mx-auto flex flex-col justify-between items-center sm:flex-row">
 				<a className="flex title-font font-medium items-center md:justify-start justify-center text-slate-100">
 					<Image
-						className="dark:invert"
-						src="/ACMsmiley.jpeg"
+						className="transform transition-transform hover:scale-110 cursor-pointer"
+						src="/Smiley.png"
 						alt="Scuffed ACM temp logo"
 						width={50}
 						height={50}
