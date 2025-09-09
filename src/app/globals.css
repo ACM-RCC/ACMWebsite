@@ -1,0 +1,399 @@
+@import "tailwindcss";
+
+/* Modern 2025 Soft Color Palette for RCC ACM */
+:root {
+	/* Primary Colors - Warmer, softer tones */
+	--background: #faf8f5;
+	--foreground: #3a3a3a;
+
+	/* Enhanced Soft Pastel Accent Colors with better contrast */
+	--pastel-blue: #a8ceec;
+	--pastel-lavender: #c9b8dd;
+	--pastel-mint: #9fdfb8;
+	--pastel-peach: #f5c895;
+	--pastel-rose: #f0b8b8;
+	--pastel-sage: #bcc99a;
+
+	/* Warmer Neutral Colors - 2025 inspired earthy tones */
+	--neutral-50: #faf8f5;
+	--neutral-100: #f2efea;
+	--neutral-200: #e8e3da;
+	--neutral-300: #d6cfc2;
+	--neutral-400: #a8a093;
+	--neutral-500: #7a7269;
+	--neutral-600: #5a544a;
+	--neutral-700: #423e36;
+	--neutral-800: #2e2b25;
+	--neutral-900: #1c1a16;
+
+	/* Semantic Colors */
+	--primary: var(--pastel-blue);
+	--secondary: var(--pastel-lavender);
+	--accent: var(--pastel-mint);
+	--success: var(--pastel-sage);
+	--warning: var(--pastel-peach);
+	--error: var(--pastel-rose);
+
+	/* Typography */
+	--font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		sans-serif;
+	--font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+	/* Spacing */
+	--spacing-xs: 0.25rem;
+	--spacing-sm: 0.5rem;
+	--spacing-md: 1rem;
+	--spacing-lg: 1.5rem;
+	--spacing-xl: 2rem;
+	--spacing-2xl: 3rem;
+	--spacing-3xl: 4rem;
+
+	/* Border Radius */
+	--radius-sm: 0.375rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 0.75rem;
+	--radius-xl: 1rem;
+
+	/* Shadows */
+	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+		0 4px 6px -4px rgb(0 0 0 / 0.1);
+	--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+		0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-primary: var(--primary);
+	--color-secondary: var(--secondary);
+	--color-accent: var(--accent);
+	--color-success: var(--success);
+	--color-warning: var(--warning);
+	--color-error: var(--error);
+
+	/* Neutral color scale for Tailwind classes */
+	--color-neutral-50: var(--neutral-50);
+	--color-neutral-100: var(--neutral-100);
+	--color-neutral-200: var(--neutral-200);
+	--color-neutral-300: var(--neutral-300);
+	--color-neutral-400: var(--neutral-400);
+	--color-neutral-500: var(--neutral-500);
+	--color-neutral-600: var(--neutral-600);
+	--color-neutral-700: var(--neutral-700);
+	--color-neutral-800: var(--neutral-800);
+	--color-neutral-900: var(--neutral-900);
+
+	/* Card colors for UI components */
+	--color-card: var(--neutral-50);
+	--color-card-foreground: var(--foreground);
+
+	/* Muted colors */
+	--color-muted: var(--neutral-100);
+	--color-muted-foreground: var(--neutral-600);
+
+	/* Border colors */
+	--color-border: var(--neutral-200);
+
+	/* Spacing utilities */
+	--spacing-xs: 0.25rem;
+	--spacing-sm: 0.5rem;
+	--spacing-md: 1rem;
+	--spacing-lg: 1.5rem;
+	--spacing-xl: 2rem;
+	--spacing-2xl: 3rem;
+	--spacing-3xl: 4rem;
+
+	--font-sans: var(--font-sans);
+	--font-mono: var(--font-mono);
+}
+
+/* Dark mode support - 2025 softer dark palette with better contrast */
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Softer, less harsh dark backgrounds */
+		--background: #2a2520;
+		--foreground: #f0ebe0;
+
+		/* Rebalanced neutral scale for softer dark mode */
+		--neutral-50: #2f2a24;
+		--neutral-100: #3d362e;
+		--neutral-200: #4a423a;
+		--neutral-300: #5f564c;
+		--neutral-400: #7a6f63;
+		--neutral-500: #9a8d7f;
+		--neutral-600: #bfb5a7;
+		--neutral-700: #d4ccc0;
+		--neutral-800: #e6dfd5;
+		--neutral-900: #f0ebe0;
+
+		/* Enhanced but softer pastels for dark mode */
+		--pastel-blue: #7ac3f0;
+		--pastel-lavender: #c4a8db;
+		--pastel-mint: #8ee6b8;
+		--pastel-peach: #f5c895;
+		--pastel-rose: #f0b8b8;
+		--pastel-sage: #b8d29a;
+	}
+}
+
+/* Manual theme classes for explicit control */
+.theme-light {
+	--background: #faf8f5;
+	--foreground: #3a3a3a;
+	--neutral-50: #faf8f5;
+	--neutral-100: #f2efea;
+	--neutral-200: #e8e3da;
+	--neutral-300: #d6cfc2;
+	--neutral-400: #a8a093;
+	--neutral-500: #7a7269;
+	--neutral-600: #5a544a;
+	--neutral-700: #423e36;
+	--neutral-800: #2e2b25;
+	--neutral-900: #1c1a16;
+}
+
+.theme-dark {
+	--background: #2a2520;
+	--foreground: #f0ebe0;
+	--neutral-50: #2f2a24;
+	--neutral-100: #3d362e;
+	--neutral-200: #4a423a;
+	--neutral-300: #5f564c;
+	--neutral-400: #7a6f63;
+	--neutral-500: #9a8d7f;
+	--neutral-600: #bfb5a7;
+	--neutral-700: #d4ccc0;
+	--neutral-800: #e6dfd5;
+	--neutral-900: #f0ebe0;
+}
+
+/* Manual theme button overrides */
+.theme-dark .btn-primary {
+	background: var(--neutral-700);
+	color: var(--neutral-50);
+}
+
+.theme-dark .btn-primary:hover {
+	background: var(--neutral-600);
+	color: var(--neutral-50);
+}
+
+.theme-dark .btn-secondary {
+	background: var(--neutral-600);
+	color: var(--neutral-50);
+}
+
+.theme-dark .btn-secondary:hover {
+	background: var(--neutral-500);
+	color: var(--neutral-50);
+}
+
+/* Base styles */
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-sans);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	margin: 0;
+	padding: 0;
+}
+
+main {
+	position: relative;
+	z-index: 1;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 600;
+	line-height: 1.2;
+	margin: 0;
+}
+
+h1 {
+	font-size: 2.5rem;
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 2rem;
+	font-weight: 600;
+}
+
+h3 {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+h4 {
+	font-size: 1.25rem;
+	font-weight: 500;
+}
+
+/* Links */
+a {
+	color: var(--neutral-600);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+a:hover {
+	color: var(--neutral-800);
+}
+
+/* Buttons */
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--spacing-sm) var(--spacing-lg);
+	border-radius: var(--radius-md);
+	font-weight: 500;
+	transition: all 0.2s ease;
+	cursor: pointer;
+	border: none;
+	text-decoration: none;
+}
+
+.btn-primary {
+	background: var(--primary);
+	color: var(--neutral-800);
+	font-weight: 600;
+	min-height: 44px;
+	padding: 0.75rem 1.5rem;
+	border-radius: 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.btn-primary:hover {
+	background: var(--neutral-600);
+	color: var(--neutral-50);
+	transform: translateY(-1px);
+	box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+	background: var(--secondary);
+	color: var(--neutral-800);
+	font-weight: 600;
+	min-height: 44px;
+	padding: 0.75rem 1.5rem;
+	border-radius: 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.btn-secondary:hover {
+	background: var(--neutral-600);
+	color: var(--neutral-50);
+	transform: translateY(-1px);
+	box-shadow: var(--shadow-md);
+}
+
+/* Dark mode button adjustments */
+@media (prefers-color-scheme: dark) {
+	.btn-primary {
+		background: var(--neutral-700);
+		color: var(--neutral-50);
+	}
+
+	.btn-primary:hover {
+		background: var(--neutral-600);
+		color: var(--neutral-50);
+	}
+
+	.btn-secondary {
+		background: var(--neutral-600);
+		color: var(--neutral-50);
+	}
+
+	.btn-secondary:hover {
+		background: var(--neutral-500);
+		color: var(--neutral-50);
+	}
+}
+
+/* Cards */
+.card {
+	background: var(--neutral-50) !important;
+	color: var(--foreground) !important;
+	border-radius: var(--radius-lg);
+	padding: var(--spacing-xl);
+	box-shadow: var(--shadow-sm);
+	border: 1px solid var(--neutral-200);
+	transition: all 0.2s ease;
+}
+
+.card:hover {
+	box-shadow: var(--shadow-md);
+	transform: translateY(-2px);
+}
+
+/* Force proper text colors in cards */
+.card h3,
+.card p,
+.card span {
+	color: var(--foreground) !important;
+}
+
+/* Utility classes - Migrated to Tailwind where possible */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 var(--spacing-lg);
+}
+
+.section {
+	padding: var(--spacing-3xl) 0;
+}
+
+/* Keep text-muted as it's semantic */
+.text-muted {
+	color: var(--neutral-600);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.animate-fade-in-up {
+	animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive design - Keep essential utilities */
+@media (max-width: 768px) {
+	.container {
+		padding: 0 var(--spacing-md);
+	}
+
+	.section {
+		padding: var(--spacing-2xl) 0;
+	}
+}
