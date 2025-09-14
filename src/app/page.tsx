@@ -30,11 +30,28 @@ export default function Home() {
 										RCC ACM
 									</span>
 								</h1>
+								
 
 								<p className="text-xl text-neutral-600 mb-8 leading-relaxed">
 									Connect with fellow computer science students and tech
 									enthusiasts, attend workshops, and build your future in tech.
 								</p>
+
+								<div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+								<a
+									href="https://discord.gg/fM2HbsJyBG"
+									className="btn btn-primary">
+									<MessageCircle className="w-5 h-5 mr-2" />
+									Join Discord
+								</a>
+								<a
+									href="https://www.instagram.com/rcc.acm/"
+									className="btn btn-secondary">
+									<Instagram className="w-5 h-5 mr-2" />
+									Follow Us
+								</a>
+								</div>
+
 							</div>
 						</div>
 					</div>
@@ -104,21 +121,6 @@ export default function Home() {
 								Connect with us and become part of our growing community. We
 								welcome students of all skill levels and backgrounds.
 							</p>
-
-							<div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-								<a
-									href="https://discord.gg/h8A9AkGF"
-									className="btn btn-primary">
-									<MessageCircle className="w-5 h-5 mr-2" />
-									Join Discord
-								</a>
-								<a
-									href="https://www.instagram.com/rcc.acm/"
-									className="btn btn-secondary">
-									<Instagram className="w-5 h-5 mr-2" />
-									Follow Us
-								</a>
-							</div>
 
 							<div className="grid sm:grid-cols-2 gap-6 md:gap-8 text-center">
 								<div className="p-4">
