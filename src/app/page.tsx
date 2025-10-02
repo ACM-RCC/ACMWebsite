@@ -1,147 +1,143 @@
+"use client";
+
+import { ScrollTriggerComponent } from "@/components/animations/ScrollTrigger";
 import { Header } from "@/components/layout/header";
+import { FeaturesSection } from "@/components/sections/FeaturesSection";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { ScrollProgressIndicator } from "@/components/ui/ScrollProgressIndicator";
+import { useVideoParallax } from "@/hooks/useVideoParallax";
 import {
-	BookOpen,
-	Calendar,
-	Code,
-	Instagram,
-	MessageCircle,
-	Users,
-} from "lucide-react";
+	destroySmoothScroll,
+	initSmoothScroll,
+} from "@/lib/animations/smooth-scroll";
+import { useEffect } from "react";
 
 export default function Home() {
+	const parallax = useVideoParallax();
+
+	useEffect(() => {
+		// Initialize smooth scroll for luxury feel
+		initSmoothScroll();
+
+		return () => {
+			destroySmoothScroll();
+		};
+	}, []);
+
 	return (
-		<div className="min-h-screen bg-background">
+		<div className="min-h-screen bg-background relative" style={{ zIndex: 0 }}>
+			{/* Scroll Progress Indicator */}
+			<ScrollProgressIndicator />
+
 			<Header />
 
-			{/* Main content with proper header clearance */}
-			<main className="pt-16">
-				{/* Hero Section */}
-				<section className="section pt-8 md:pt-12 pb-16">
+			{/* Cinematic Hero Section - Fixed positioning for parallax */}
+			<div
+				data-section="hero"
+				className="relative"
+				style={{ height: "100vh", zIndex: 20 }}>
+				<HeroSection />
+			</div>
+
+			{/* Enhanced Features Section - Expands as video shrinks */}
+			<div
+				data-section="features"
+				className="relative"
+				style={{
+					marginTop: `${parallax.nextSectionOffset}px`,
+					minHeight: "100vh",
+					zIndex: 20,
+				}}>
+				{/* Content layer - above video */}
+				<div className="relative" style={{ zIndex: 20 }}>
+					<FeaturesSection />
+				</div>
+			</div>
+
+			{/* Community Showcase Section - Video continues behind */}
+			<ScrollTriggerComponent animation="scale" start="top 60%">
+				<section
+					data-section="community"
+					className="py-20 md:py-28 lg:py-32 relative"
+					style={{ zIndex: 50 }}>
 					<div className="container">
-						<div className="text-center">
-							<div className="mb-8">
-								<div className="inline-flex items-center space-x-2 bg-gradient-to-r from-[var(--pastel-blue)] to-[var(--pastel-lavender)] text-neutral-800 px-4 py-2 rounded-full text-sm font-medium mb-8">
-									<span>Riverside City College</span>
-								</div>
-
-								<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-800 mb-8 leading-tight">
-									Welcome to{" "}
-									<span className="bg-gradient-to-r from-[var(--pastel-blue)] to-[var(--pastel-lavender)] bg-clip-text text-transparent">
-										RCC ACM
-									</span>
-								</h1>
-								
-
-								<p className="text-xl text-neutral-600 mb-8 leading-relaxed">
-									Connect with fellow computer science students and tech
-									enthusiasts, attend workshops, and build your future in tech.
-								</p>
-
-								<div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-								<a
-									href="https://discord.gg/fM2HbsJyBG"
-									className="btn btn-primary">
-									<MessageCircle className="w-5 h-5 mr-2" />
-									Join Discord
-								</a>
-								<a
-									href="https://www.instagram.com/rcc.acm/"
-									className="btn btn-secondary">
-									<Instagram className="w-5 h-5 mr-2" />
-									Follow Us
-								</a>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</section>
-
-				{/* Features Section */}
-				<section className="section bg-neutral-50">
-					<div className="container">
-						<div className="text-center mb-16">
-							<h2 className="text-3xl md:text-4xl font-bold text-neutral-800 mb-4">
-								Why Join RCC ACM?
+						<div className="text-center mb-16 md:mb-20 lg:mb-24">
+							<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 md:mb-10 drop-shadow-lg">
+								Join Our <span className="text-racing-orange">Community</span>
 							</h2>
+							<p className="text-xl md:text-2xl text-neutral-300 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+								Connect with fellow students in our weekly gatherings where
+								innovation meets collaboration. Every Thursday, we come together
+								to learn, code, and grow.
+							</p>
 						</div>
 
-						<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+						{/* Community Stats */}
+						<div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-16">
 							{[
-								{
-									icon: Users,
-									title: "Community",
-									description:
-										"Connect with like-minded students and make friends",
-									color: "var(--pastel-blue)",
-								},
-								{
-									icon: Code,
-									title: "Learning",
-									description:
-										"Attend workshops, coding sessions, and tech talks",
-									color: "var(--pastel-mint)",
-								},
-								{
-									icon: Calendar,
-									title: "Events",
-									description:
-										"Participate in hackathons, competitions, and networking events",
-									color: "var(--pastel-peach)",
-								},
-								{
-									icon: BookOpen,
-									title: "Resources",
-									description:
-										"Access study materials, career guidance, and mentorship",
-									color: "var(--pastel-lavender)",
-								},
-							].map((feature) => (
-								<div key={feature.title} className="card text-center group">
-									<div
-										className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110"
-										style={{ backgroundColor: feature.color }}>
-										<feature.icon className="w-8 h-8 text-neutral-700" />
+								{ label: "Active Members", value: "50+" },
+								{ label: "Weekly Meetings", value: "1" },
+								{ label: "Projects", value: "12+" },
+								{ label: "Years Active", value: "3+" },
+							].map((stat) => (
+								<div
+									key={stat.label}
+									className="text-center p-6 md:p-8 bg-white/8 backdrop-blur-lg rounded-3xl border border-white/15 shadow-lg shadow-black/10">
+									<div className="text-2xl md:text-3xl font-bold text-racing-orange mb-3 drop-shadow-md">
+										{stat.value}
 									</div>
-									<h3 className="text-xl font-semibold text-neutral-800 mb-3">
-										{feature.title}
-									</h3>
-									<p className="text-neutral-600">{feature.description}</p>
+									<div className="text-neutral-200 text-xs md:text-sm drop-shadow-sm font-medium">
+										{stat.label}
+									</div>
 								</div>
 							))}
 						</div>
 					</div>
 				</section>
+			</ScrollTriggerComponent>
 
-				{/* Contact Section */}
-				<section id="contact" className="section bg-neutral-100">
-					<div className="container">
-						<div className="text-center max-w-4xl mx-auto">
-							<p className="text-lg md:text-xl text-neutral-700 mb-8 leading-relaxed">
-								Connect with us and become part of our growing community. We
-								welcome students of all skill levels and backgrounds.
-							</p>
+			{/* Contact Section - Video continues behind */}
+			<ScrollTriggerComponent animation="fadeIn" start="top 70%">
+				<section
+					id="contact"
+					data-section="contact"
+					className="py-20 md:py-28 lg:py-32 relative"
+					style={{ zIndex: 50 }}>
+					{/* Content layer - above video */}
+					<div className="relative" style={{ zIndex: 50 }}>
+						<div className="container">
+							<div className="text-center max-w-5xl mx-auto">
+								<h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 md:mb-10 drop-shadow-lg">
+									Join Our Community
+								</h2>
+								<p className="text-lg md:text-xl lg:text-2xl text-neutral-200 mb-12 md:mb-16 leading-relaxed drop-shadow-md">
+									Connect with us and become part of our growing community. We
+									welcome students of all skill levels and backgrounds.
+								</p>
 
-							<div className="grid sm:grid-cols-2 gap-6 md:gap-8 text-center">
-								<div className="p-4">
-									<h3 className="text-lg md:text-xl font-semibold text-neutral-800 mb-2">
-										Meetings
-									</h3>
-									<p className="text-neutral-700">
-										Every Thursday at 12:50 - 1:50 PM
-									</p>
-								</div>
-								<div className="p-4">
-									<h3 className="text-lg md:text-xl font-semibold text-neutral-800 mb-2">
-										Location
-									</h3>
-									<p className="text-neutral-700">A-210 Simulation Lab</p>
+								<div className="grid sm:grid-cols-2 gap-8 md:gap-12 lg:gap-16 text-center mb-8">
+									<div className="p-8 md:p-10 bg-white/8 backdrop-blur-lg rounded-3xl border border-white/15 shadow-lg shadow-black/10">
+										<h3 className="text-lg md:text-xl font-semibold text-white mb-4 drop-shadow-md">
+											Weekly Meetings
+										</h3>
+										<p className="text-neutral-200 text-sm md:text-base drop-shadow-sm">
+											Every Thursday at 12:50 - 1:50 PM
+										</p>
+									</div>
+									<div className="p-8 md:p-10 bg-white/8 backdrop-blur-lg rounded-3xl border border-white/15 shadow-lg shadow-black/10">
+										<h3 className="text-lg md:text-xl font-semibold text-white mb-4 drop-shadow-md">
+											Location
+										</h3>
+										<p className="text-neutral-200 text-sm md:text-base drop-shadow-sm">
+											A-210 Simulation Lab
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</section>
-			</main>
+			</ScrollTriggerComponent>
 		</div>
 	);
 }

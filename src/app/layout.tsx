@@ -1,34 +1,43 @@
-import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
+import { EventModalProvider } from "@/components/ui/EventModalProvider";
+import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import "./globals.css";
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+const inter = Inter({
+	variable: "--font-inter",
+	subsets: ["latin"],
+	display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const jetbrainsMono = JetBrains_Mono({
+	variable: "--font-jetbrains-mono",
+	subsets: ["latin"],
+	display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: 'ACM@RCC',
-  description: 'RCCs ACM Chapter',
+	title: "RCC ACM - Association for Computing Machinery",
+	description:
+		"Join the premier computer science community at Riverside City College. Connect with fellow CS students, attend workshops, and build your future in tech.",
+	openGraph: {
+		title: "RCC ACM - Computing Excellence",
+		description:
+			"Connect, learn, and grow with fellow computer science students at Riverside City College.",
+		type: "website",
+	},
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body
+				className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
+				<EventModalProvider>{children}</EventModalProvider>
+			</body>
+		</html>
+	);
 }
