@@ -1,8 +1,6 @@
 "use client";
 
 import { MagneticButton } from "@/components/animations/MagneticButton";
-import { VideoBackground } from "@/components/ui/VideoBackground";
-import { useVideoParallax } from "@/hooks/useVideoParallax";
 import { ANIMATION_CONFIG } from "@/lib/animations/gsap-config";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -17,7 +15,6 @@ export function HeroSection() {
 	const titleRef = useRef<HTMLHeadingElement>(null);
 	const subtitleRef = useRef<HTMLParagraphElement>(null);
 	const ctaRef = useRef<HTMLDivElement>(null);
-	const parallax = useVideoParallax();
 
 	useEffect(() => {
 		const hero = heroRef.current;
@@ -70,7 +67,7 @@ export function HeroSection() {
 			clearProps: "all",
 		});
 
-		// Note: Parallax effect is now handled by useVideoParallax hook
+
 
 		return () => {
 			masterTL.kill();
@@ -82,14 +79,7 @@ export function HeroSection() {
 		<section
 			ref={heroRef}
 			className="min-h-screen flex items-center justify-center relative overflow-hidden">
-			{/* Video Background with Parallax */}
-			<VideoBackground
-				src="/hero-video.mp4"
-				overlayOpacity={0.2}
-				brightness={0.7}
-				contrast={1.1}
-				enableParallax={true}
-			/>
+			{/* Video Background removed - handled globally */}
 
 			<div className="container relative z-10">
 				<div className="text-center">

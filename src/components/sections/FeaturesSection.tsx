@@ -259,9 +259,9 @@ export function FeaturesSection() {
 						Why Join <span className="text-racing-orange">RCC ACM</span>?
 					</h2>
 					<p className="text-xl md:text-2xl text-neutral-200 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
-						Discover the opportunities waiting for you in our vibrant computer
-						science community. Build your skills, expand your network, and shape
-						your future in technology.
+						the opportunities waiting for you in our vibrant computer science
+						community. Build your skills, expand your network, and shape your
+						future in technology.
 					</p>
 				</div>
 

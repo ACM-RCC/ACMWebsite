@@ -50,7 +50,7 @@ export function FeatureModal({ isOpen, onClose, feature }: FeatureModalProps) {
 		};
 	}, [isOpen, onClose]);
 
-	const modalVariants = {
+	const modalVariants: any = {
 		hidden: {
 			opacity: 0,
 			scale: 0.8,

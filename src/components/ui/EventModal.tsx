@@ -4,15 +4,15 @@ import { useClubMeeting } from "@/hooks/useClubMeeting";
 import { MeetingStatus } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-	Calendar,
-	Clock,
-	Code,
-	ExternalLink,
-	Instagram,
-	MapPin,
-	MessageCircle,
-	Users,
-	X,
+    Calendar,
+    Clock,
+    Code,
+    ExternalLink,
+    Instagram,
+    MapPin,
+    MessageCircle,
+    Users,
+    X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -88,7 +88,7 @@ export function EventModal({ isOpen, onClose }: EventModalProps) {
 	// Don't render on server or if not mounted
 	if (!mounted) return null;
 
-	const modalVariants = {
+	const modalVariants: any = {
 		hidden: { opacity: 0, scale: 0.8, y: 20 },
 		visible: {
 			opacity: 1,

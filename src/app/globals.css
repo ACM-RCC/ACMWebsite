@@ -1,440 +1,106 @@
 @import "tailwindcss";
 
-/* Koenigsegg-Inspired Design System */
+/* Modern Premium Design System */
 :root {
-	/* Carbon Series - Primary Structure (Koenigsegg-inspired) */
-	--carbon-black: #0a0a0a;
-	--carbon-grey: #1a1a1a;
-	--graphite: #2a2a2a;
-	--steel: #4a4a4a;
-	--platinum: #e8e8e8;
-	--ghost-white: #fafafa;
+	/* Core Colors */
+	--background: #050505;
+	--foreground: #ffffff;
+	
+	/* Accents */
+	--racing-orange: #ff4d00;
+	--orange-glow: rgba(255, 77, 0, 0.5);
+	
+	/* Neutrals */
+	--neutral-50: #fafafa;
+	--neutral-100: #f5f5f5;
+	--neutral-200: #e5e5e5;
+	--neutral-300: #d4d4d4;
+	--neutral-400: #a3a3a3;
+	--neutral-500: #737373;
+	--neutral-600: #525252;
+	--neutral-700: #404040;
+	--neutral-800: #262626;
+	--neutral-900: #171717;
+	--neutral-950: #0a0a0a;
 
-	/* Complementary Dark Blue for Orange Highlights */
-	--deep-navy: #0f1419;
-	--navy-blue: #1a2332;
-	--steel-blue: #2d3748;
-	--slate-blue: #4a5568;
-
-	/* Metallic Accents */
-	--brushed-silver: #c0c0c0;
-	--chrome: #f5f5f5;
-
-	/* Signature Colors */
-	--racing-orange: #ff6b35;
-	--orange-hover: #e55a2b;
-	--neutral-accent: #6b7280;
-	--neutral-accent-hover: #4b5563;
-	--success-green: #00ff88;
-	--warning-yellow: #ffd700;
-	--error-red: #ff4444;
-
-	/* Light Mode Assignments */
-	--background: var(--ghost-white);
-	--foreground: var(--carbon-black);
-	--primary: var(--racing-orange);
-	--secondary: var(--neutral-accent);
-	--accent: var(--steel);
-	--muted: var(--platinum);
-	--muted-foreground: var(--steel);
-	--card: var(--ghost-white);
-	--card-foreground: var(--carbon-black);
-	--border: var(--platinum);
-
-	/* Automotive-Inspired Shadows */
-	--shadow-sm: 0 1px 3px rgba(10, 10, 10, 0.1);
-	--shadow-md: 0 4px 12px rgba(10, 10, 10, 0.15);
-	--shadow-lg: 0 10px 25px rgba(10, 10, 10, 0.2);
-	--shadow-xl: 0 20px 40px rgba(10, 10, 10, 0.25);
-
-	/* Premium Gradients */
-	--gradient-primary: linear-gradient(
-		135deg,
-		var(--racing-orange) 0%,
-		var(--orange-hover) 100%
-	);
-	--gradient-secondary: linear-gradient(
-		135deg,
-		var(--neutral-accent) 0%,
-		var(--neutral-accent-hover) 100%
-	);
-	--gradient-surface: linear-gradient(
-		135deg,
-		var(--ghost-white) 0%,
-		var(--chrome) 100%
-	);
+	/* UI Elements */
+	--card-bg: rgba(255, 255, 255, 0.03);
+	--card-border: rgba(255, 255, 255, 0.08);
+	--card-hover: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
-	--color-primary: var(--primary);
-	--color-secondary: var(--secondary);
-	--color-accent: var(--accent);
-	--color-muted: var(--muted);
-	--color-muted-foreground: var(--muted-foreground);
-	--color-card: var(--card);
-	--color-card-foreground: var(--card-foreground);
-	--color-border: var(--border);
-
-	/* Signature colors for Tailwind */
 	--color-racing-orange: var(--racing-orange);
-	--color-neutral-accent: var(--neutral-accent);
-	--color-success-green: var(--success-green);
-
-	/* Neutral scale for Tailwind */
-	--color-neutral-50: var(--ghost-white);
-	--color-neutral-100: var(--chrome);
-	--color-neutral-200: var(--platinum);
-	--color-neutral-300: var(--brushed-silver);
-	--color-neutral-400: var(--steel);
-	--color-neutral-500: var(--graphite);
-	--color-neutral-600: var(--carbon-grey);
-	--color-neutral-700: var(--carbon-black);
-	--color-neutral-800: var(--carbon-black);
-	--color-neutral-900: var(--carbon-black);
+	
+	--color-neutral-50: var(--neutral-50);
+	--color-neutral-100: var(--neutral-100);
+	--color-neutral-200: var(--neutral-200);
+	--color-neutral-300: var(--neutral-300);
+	--color-neutral-400: var(--neutral-400);
+	--color-neutral-500: var(--neutral-500);
+	--color-neutral-600: var(--neutral-600);
+	--color-neutral-700: var(--neutral-700);
+	--color-neutral-800: var(--neutral-800);
+	--color-neutral-900: var(--neutral-900);
+	--color-neutral-950: var(--neutral-950);
 }
 
-/* Dark Mode - Complementary Dark Blue */
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: var(--deep-navy);
-		--foreground: var(--ghost-white);
-		--card: var(--navy-blue);
-		--card-foreground: var(--ghost-white);
-		--muted: var(--steel-blue);
-		--border: var(--steel-blue);
-
-		/* Blue-tinted neutral scale for dark mode */
-		--color-neutral-50: var(--navy-blue);
-		--color-neutral-100: var(--steel-blue);
-		--color-neutral-200: var(--slate-blue);
-		--color-neutral-300: var(--brushed-silver);
-		--color-neutral-400: var(--platinum);
-		--color-neutral-500: var(--chrome);
-		--color-neutral-600: var(--ghost-white);
-		--color-neutral-700: var(--ghost-white);
-		--color-neutral-800: var(--ghost-white);
-		--color-neutral-900: var(--ghost-white);
-	}
-}
-
-/* Manual theme classes */
-.theme-light {
-	--background: var(--ghost-white);
-	--foreground: var(--carbon-black);
-	--card: var(--ghost-white);
-	--muted: var(--platinum);
-	--border: var(--platinum);
-}
-
-.theme-dark {
-	--background: var(--deep-navy);
-	--foreground: var(--ghost-white);
-	--card: var(--navy-blue);
-	--muted: var(--steel-blue);
-	--border: var(--steel-blue);
-}
-
-/* Base Styles - Luxury Automotive Inspired */
-* {
-	box-sizing: border-box;
-}
-
+/* Global Reset & Base Styles */
 html {
 	scroll-behavior: smooth;
+	background-color: var(--background);
 }
 
 body {
 	background: var(--background);
 	color: var(--foreground);
-	font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
-		sans-serif;
-	line-height: 1.6;
+	font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-		color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-	margin: 0;
-	padding: 0;
+	overflow-x: hidden;
 }
 
-/* Typography - Precision Engineering Aesthetic */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: 600;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+	letter-spacing: -0.03em;
 	line-height: 1.1;
-	margin: 0;
-	color: var(--foreground);
-	letter-spacing: -0.02em;
 }
 
-h1 {
-	font-size: clamp(2.5rem, 6vw, 7rem);
-	font-weight: 900;
-	line-height: 0.9;
+/* Utilities */
+.glass-panel {
+	background: var(--card-bg);
+	backdrop-filter: blur(12px);
+	border: 1px solid var(--card-border);
 }
 
-h2 {
-	font-size: clamp(1.875rem, 4vw, 3rem);
-	font-weight: 700;
+.text-gradient {
+	background: linear-gradient(to right, #fff, #a3a3a3);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
-h3 {
-	font-size: clamp(1.25rem, 2.5vw, 1.875rem);
-	font-weight: 600;
+.text-gradient-orange {
+	background: linear-gradient(to right, #ff4d00, #ff8800);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
-/* Links - Neutral Accents */
-a {
-	color: var(--neutral-accent);
-	text-decoration: none;
-	transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
 }
 
-a:hover {
-	color: var(--neutral-accent-hover);
+::-webkit-scrollbar-track {
+	background: var(--background);
 }
 
-/* Buttons - Modern Minimal Styling */
-.btn {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	padding: 0.75rem 1.5rem;
-	border-radius: 0.75rem;
-	font-weight: 500;
-	font-size: 0.95rem;
-	line-height: 1;
-	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-	cursor: pointer;
-	border: none;
-	text-decoration: none;
-	min-height: 2.75rem;
-	backdrop-filter: blur(10px);
+::-webkit-scrollbar-thumb {
+	background: var(--neutral-800);
+	border-radius: 4px;
 }
 
-.btn-primary {
-	background: var(--racing-orange);
-	color: var(--ghost-white);
-	border: 1px solid transparent;
-}
-
-.btn-primary:hover {
-	background: var(--orange-hover);
-	transform: translateY(-1px);
-}
-
-.btn-primary:active {
-	transform: translateY(0);
-	transition-duration: 0.1s;
-}
-
-.btn-secondary {
-	background: rgba(255, 255, 255, 0.1);
-	color: var(--ghost-white);
-	border: 1px solid rgba(255, 255, 255, 0.2);
-	backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-	background: rgba(255, 255, 255, 0.15);
-	border-color: rgba(255, 255, 255, 0.3);
-	transform: translateY(-1px);
-}
-
-/* Cards - Elevated Surfaces */
-.card {
-	background: var(--card);
-	color: var(--card-foreground);
-	border-radius: 1rem;
-	padding: 2rem;
-	border: 1px solid var(--border);
-	box-shadow: var(--shadow-sm);
-	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card:hover {
-	transform: translateY(-4px);
-	box-shadow: var(--shadow-lg);
-	border-color: var(--steel);
-}
-
-.card-premium {
-	background: var(--gradient-surface);
-	border: 1px solid rgba(192, 192, 192, 0.3);
-	box-shadow: var(--shadow-md);
-}
-
-.card-premium:hover {
-	box-shadow: var(--shadow-xl);
-}
-
-/* Utility Classes */
-.container {
-	max-width: 1400px;
-	margin: 0 auto;
-	padding: 0 2rem;
-}
-
-.container-narrow {
-	max-width: 800px;
-	margin: 0 auto;
-	padding: 0 2rem;
-}
-
-.section {
-	padding: 8rem 0;
-}
-
-.section-compact {
-	padding: 4rem 0;
-}
-
-.text-muted {
-	color: var(--muted-foreground);
-}
-
-/* Premium Loading States */
-.loading-spinner {
-	width: 2rem;
-	height: 2rem;
-	border: 2px solid rgba(255, 107, 53, 0.3);
-	border-top: 2px solid var(--racing-orange);
-	border-radius: 50%;
-	animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
-/* Automotive-Inspired Animations */
-@keyframes fadeInUp {
-	from {
-		opacity: 0;
-		transform: translateY(2rem);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes scaleIn {
-	from {
-		opacity: 0;
-		transform: scale(0.9);
-	}
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-@keyframes magneticHover {
-	0% {
-		transform: scale(1) translateY(0);
-	}
-	50% {
-		transform: scale(1.02) translateY(-2px);
-	}
-	100% {
-		transform: scale(1.05) translateY(-4px);
-	}
-}
-
-/* Scroll-triggered reveals */
-.reveal-on-scroll {
-	opacity: 0;
-	transform: translateY(3rem);
-	transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal-on-scroll.in-view {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-/* Stagger children animations */
-.stagger-children > * {
-	opacity: 0;
-	transform: translateY(2rem);
-	transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.stagger-children.in-view > *:nth-child(1) {
-	transition-delay: 0.1s;
-}
-.stagger-children.in-view > *:nth-child(2) {
-	transition-delay: 0.2s;
-}
-.stagger-children.in-view > *:nth-child(3) {
-	transition-delay: 0.3s;
-}
-.stagger-children.in-view > *:nth-child(4) {
-	transition-delay: 0.4s;
-}
-.stagger-children.in-view > *:nth-child(5) {
-	transition-delay: 0.5s;
-}
-
-.stagger-children.in-view > * {
-	opacity: 1;
-	transform: translateY(0);
-}
-
-/* Accessibility - Respect Motion Preferences */
-@media (prefers-reduced-motion: reduce) {
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
-	}
-
-	.parallax-element {
-		transform: none !important;
-	}
-
-	.magnetic-element {
-		transform: none !important;
-	}
-}
-
-/* Focus Management */
-.focus-visible {
-	outline: 2px solid var(--racing-orange);
-	outline-offset: 2px;
-	border-radius: 0.25rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-	.container {
-		padding: 0 1rem;
-	}
-
-	.section {
-		padding: 4rem 0;
-	}
-
-	h1 {
-		font-size: clamp(2rem, 8vw, 3rem);
-	}
-	h2 {
-		font-size: clamp(1.5rem, 6vw, 2rem);
-	}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--neutral-700);
 }
