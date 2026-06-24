@@ -6,7 +6,7 @@ import { Header } from "@/components/layout/header";
 import { CurtainFooter } from "@/components/sections/CurtainFooter";
 import { HorizontalFeatures } from "@/components/sections/HorizontalFeatures";
 import { ParallaxCommunity } from "@/components/sections/ParallaxCommunity";
-import { PinZoomText } from "@/components/sections/PinZoomText";
+import { Manifesto } from "@/components/sections/Manifesto";
 import { ScrubbableHero } from "@/components/sections/ScrubbableHero";
 import { MagneticCursor } from "@/components/ui/MagneticCursor";
 import {
@@ -37,7 +37,7 @@ export default function Home() {
 			const sections = [
 				{ id: "hero", color: "#0a0a0a" }, // Neutral-950
 				{ id: "velocity", color: "#ff4d00" }, // Racing Orange
-				{ id: "pinzoom", color: "#ffffff" }, // White for contrast
+				{ id: "manifesto", color: "#0a0a0a" }, // Neutral-950
 				{ id: "features", color: "#0a0a0a" },
 				{ id: "community", color: "#171717" }, // Neutral-900
 				{ id: "contact", color: "#ff4d00" },
@@ -84,9 +84,9 @@ export default function Home() {
 					</VelocityText>
 				</div>
 
-				{/* Section 2.5: Pin & Zoom Text */}
-				<div data-section="pinzoom">
-					<PinZoomText />
+				{/* Section 2.5: Manifesto */}
+				<div data-section="manifesto">
+					<Manifesto />
 				</div>
 
 				{/* Section 3: Horizontal Scroll Features */}
