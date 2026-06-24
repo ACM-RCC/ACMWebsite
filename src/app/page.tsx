@@ -7,6 +7,7 @@ import { CurtainFooter } from "@/components/sections/CurtainFooter";
 import { Pillars } from "@/components/sections/Pillars";
 import { CommunityShowcase } from "@/components/sections/CommunityShowcase";
 import { Manifesto } from "@/components/sections/Manifesto";
+import { MeetingMoment } from "@/components/sections/MeetingMoment";
 import { ScrubbableHero } from "@/components/sections/ScrubbableHero";
 import { MagneticCursor } from "@/components/ui/MagneticCursor";
 import {
@@ -40,6 +41,7 @@ export default function Home() {
 				{ id: "manifesto", color: "#0a0a0a" }, // Neutral-950
 				{ id: "features", color: "#0a0a0a" },
 				{ id: "community", color: "#171717" }, // Neutral-900
+				{ id: "meeting", color: "#0a0a0a" }, // Neutral-950
 				{ id: "contact", color: "#ff4d00" },
 			];
 
@@ -99,7 +101,12 @@ export default function Home() {
 					<CommunityShowcase />
 				</div>
 
-				{/* Section 5: Curtain Footer */}
+				{/* Section 5: Meeting Moment */}
+				<div data-section="meeting">
+					<MeetingMoment />
+				</div>
+
+				{/* Section 6: Curtain Footer */}
 				<div className="relative z-20 rounded-b-[3rem] shadow-2xl mb-[80vh]" data-section="contact">
 					{/* This div acts as the "curtain" that pulls up to reveal the footer */}
 					<div className="h-20" />
