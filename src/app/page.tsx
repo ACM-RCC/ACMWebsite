@@ -4,8 +4,8 @@ import { VelocityText } from "@/components/animations/VelocityText";
 import { GuidedExperience } from "@/components/layout/GuidedExperience";
 import { Header } from "@/components/layout/header";
 import { CurtainFooter } from "@/components/sections/CurtainFooter";
-import { HorizontalFeatures } from "@/components/sections/HorizontalFeatures";
-import { ParallaxCommunity } from "@/components/sections/ParallaxCommunity";
+import { Pillars } from "@/components/sections/Pillars";
+import { CommunityShowcase } from "@/components/sections/CommunityShowcase";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { ScrubbableHero } from "@/components/sections/ScrubbableHero";
 import { MagneticCursor } from "@/components/ui/MagneticCursor";
@@ -89,14 +89,14 @@ export default function Home() {
 					<Manifesto />
 				</div>
 
-				{/* Section 3: Horizontal Scroll Features */}
+				{/* Section 3: Pillars (What we do) */}
 				<div data-section="features">
-					<HorizontalFeatures />
+					<Pillars />
 				</div>
 
-				{/* Section 4: Parallax Community */}
+				{/* Section 4: Community Showcase */}
 				<div data-section="community">
-					<ParallaxCommunity />
+					<CommunityShowcase />
 				</div>
 
 				{/* Section 5: Curtain Footer */}
