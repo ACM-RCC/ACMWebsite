@@ -4,41 +4,14 @@ import { useEventModal } from "@/components/ui/EventModalProvider";
 import { useClubMeeting } from "@/hooks/useClubMeeting";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import {
-    Calendar,
-    Code,
-    Home,
-    Menu,
-    MessageCircle,
-    Moon,
-    Sun,
-    X,
-} from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { Calendar, Code, Home, Menu, MessageCircle, X } from "lucide-react";
+import { useRef, useState } from "react";
 
 export function Header() {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-	const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark for this theme
 	const headerRef = useRef<HTMLDivElement>(null);
 	const { openModal } = useEventModal();
 	const { status } = useClubMeeting();
-
-	useEffect(() => {
-		// Check system preference on mount
-		const prefersDark = window.matchMedia(
-			"(prefers-color-scheme: dark)"
-		).matches;
-		setIsDarkMode(prefersDark);
-		document.documentElement.className = prefersDark
-			? "theme-dark"
-			: "theme-light";
-	}, []);
-
-	const toggleTheme = () => {
-		const newMode = !isDarkMode;
-		setIsDarkMode(newMode);
-		document.documentElement.className = newMode ? "theme-dark" : "theme-light";
-	};
 
 	// GSAP Animation for "Dynamic Island" reveal
 	useGSAP(() => {
@@ -100,17 +73,6 @@ export function Header() {
 									<span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
 								)}
 								<span>{status === "in_progress" ? "LIVE" : "NEXT"}</span>
-							</button>
-
-							{/* Theme Toggle */}
-							<button
-								onClick={toggleTheme}
-								className="w-9 h-9 rounded-full flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/10 transition-colors">
-								{isDarkMode ? (
-									<Moon className="w-4 h-4" />
-								) : (
-									<Sun className="w-4 h-4" />
-								)}
 							</button>
 
 							{/* Mobile Menu Toggle */}

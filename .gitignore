@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code working docs (local audit + design specs, not shipped to the team repo)
+.claude/
