@@ -18,7 +18,7 @@ export function HackerText({ text, className = "" }: HackerTextProps) {
 		if (intervalRef.current) clearInterval(intervalRef.current);
 
 		intervalRef.current = setInterval(() => {
-			setDisplayText((prev) =>
+			setDisplayText(() =>
 				text
 					.split("")
 					.map((letter, index) => {

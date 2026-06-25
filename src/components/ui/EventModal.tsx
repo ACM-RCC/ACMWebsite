@@ -2,7 +2,7 @@
 
 import { useClubMeeting } from "@/hooks/useClubMeeting";
 import { MeetingStatus } from "@/types";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import {
     Calendar,
     Clock,
@@ -88,7 +88,7 @@ export function EventModal({ isOpen, onClose }: EventModalProps) {
 	// Don't render on server or if not mounted
 	if (!mounted) return null;
 
-	const modalVariants: any = {
+	const modalVariants: Variants = {
 		hidden: { opacity: 0, scale: 0.8, y: 20 },
 		visible: {
 			opacity: 1,
@@ -179,7 +179,7 @@ export function EventModal({ isOpen, onClose }: EventModalProps) {
 										</h3>
 										<p className="text-neutral-600 dark:text-neutral-300">
 											Join us for coding challenges, tech talks, networking, and
-											community building. Whether you're a beginner or
+											community building. Whether you&apos;re a beginner or
 											experienced programmer, everyone is welcome!
 										</p>
 									</div>

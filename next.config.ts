@@ -9,7 +9,8 @@ const nextConfig: NextConfig = {
 		root: __dirname,
 	},
 	eslint: {
-		ignoreDuringBuilds: true,
+		// Lint gates the build now that the codebase is clean.
+		ignoreDuringBuilds: false,
 	},
 };
 
