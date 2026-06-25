@@ -22,11 +22,14 @@ export const MOTION_CONDITIONS = {
 	reduceMotion: "(prefers-reduced-motion: reduce)",
 } as const;
 
+/** A handler may return a cleanup function, run when its branch stops matching. */
+type MotionCleanup = void | (() => void);
+
 interface MotionHandlers {
 	/** runs when motion is allowed; create all animations here */
-	full: (ctx: gsap.Context) => void;
+	full: (ctx: gsap.Context) => MotionCleanup;
 	/** runs under reduced motion; set final/static states here (optional) */
-	reduced?: (ctx: gsap.Context) => void;
+	reduced?: (ctx: gsap.Context) => MotionCleanup;
 }
 
 export function motionMatchMedia(handlers: MotionHandlers): gsap.MatchMedia {
@@ -36,10 +39,9 @@ export function motionMatchMedia(handlers: MotionHandlers): gsap.MatchMedia {
 			| { motionOK: boolean; reduceMotion: boolean }
 			| undefined;
 		if (conditions?.reduceMotion) {
-			handlers.reduced?.(ctx);
-		} else {
-			handlers.full(ctx);
+			return handlers.reduced?.(ctx);
 		}
+		return handlers.full(ctx);
 	});
 	return mm;
 }
