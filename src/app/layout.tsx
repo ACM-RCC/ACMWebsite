@@ -15,15 +15,49 @@ const jetbrainsMono = JetBrains_Mono({
 	display: "swap",
 });
 
+const SITE_URL = "https://rccacm.com";
+const TITLE = "RCC ACM - Computer Science Community at Riverside City College";
+const DESCRIPTION =
+	"RCC ACM is the computer science community at Riverside City College. Build projects, compete in hackathons, learn the tools the industry uses, and connect with fellow CS students. Meets Thursdays in A-210.";
+
 export const metadata: Metadata = {
-	title: "RCC ACM - Association for Computing Machinery",
-	description:
-		"Join the premier computer science community at Riverside City College. Connect with fellow CS students, attend workshops, and build your future in tech.",
+	metadataBase: new URL(SITE_URL),
+	title: {
+		default: TITLE,
+		template: "%s - RCC ACM",
+	},
+	description: DESCRIPTION,
+	applicationName: "RCC ACM",
+	keywords: [
+		"RCC ACM",
+		"Riverside City College",
+		"computer science",
+		"ACM",
+		"coding club",
+		"hackathons",
+		"programming",
+		"CS community",
+	],
+	authors: [{ name: "RCC ACM" }],
+	creator: "RCC ACM",
+	alternates: { canonical: "/" },
 	openGraph: {
-		title: "RCC ACM - Computing Excellence",
-		description:
-			"Connect, learn, and grow with fellow computer science students at Riverside City College.",
 		type: "website",
+		url: SITE_URL,
+		siteName: "RCC ACM",
+		title: TITLE,
+		description: DESCRIPTION,
+		locale: "en_US",
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: TITLE,
+		description: DESCRIPTION,
+	},
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: { index: true, follow: true },
 	},
 };
 
