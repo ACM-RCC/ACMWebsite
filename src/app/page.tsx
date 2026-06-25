@@ -8,7 +8,7 @@ import { Pillars } from "@/components/sections/Pillars";
 import { CommunityShowcase } from "@/components/sections/CommunityShowcase";
 import { Manifesto } from "@/components/sections/Manifesto";
 import { MeetingMoment } from "@/components/sections/MeetingMoment";
-import { ScrubbableHero } from "@/components/sections/ScrubbableHero";
+import { Hero } from "@/components/sections/Hero";
 import { MagneticCursor } from "@/components/ui/MagneticCursor";
 import {
     destroySmoothScroll,
@@ -74,9 +74,9 @@ export default function Home() {
 			<Header />
 
 			<GuidedExperience>
-				{/* Section 1: Scrubbable Hero */}
+				{/* Section 1: Hero */}
 				<div className="relative z-10" data-section="hero">
-					<ScrubbableHero />
+					<Hero />
 				</div>
 
 				{/* Section 2: Velocity Text Transition */}
