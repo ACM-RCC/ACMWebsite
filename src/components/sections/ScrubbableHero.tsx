@@ -1,12 +1,8 @@
 "use client";
 
 import { HackerText } from "@/components/animations/HackerText";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, useGSAP } from "@/lib/animations/gsap";
 import { useRef } from "react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export function ScrubbableHero() {
 	const containerRef = useRef<HTMLDivElement>(null);

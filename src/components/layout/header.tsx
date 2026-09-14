@@ -2,8 +2,7 @@
 
 import { useEventModal } from "@/components/ui/EventModalProvider";
 import { useClubMeeting } from "@/hooks/useClubMeeting";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { gsap, useGSAP } from "@/lib/animations/gsap";
 import { Calendar, Code, Home, Menu, MessageCircle, X } from "lucide-react";
 import { useRef, useState } from "react";
 

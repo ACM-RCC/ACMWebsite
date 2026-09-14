@@ -69,7 +69,6 @@ export function Manifesto() {
 									end: "+=80%",
 									scrub: SCRUB.normal,
 									pin: true,
-									anticipatePin: 1,
 								},
 							}),
 					});

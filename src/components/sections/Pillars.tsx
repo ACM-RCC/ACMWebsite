@@ -60,7 +60,6 @@ export function Pillars() {
 							end: `+=${distance}`,
 							scrub: SCRUB.normal,
 							pin: true,
-							anticipatePin: 1,
 							invalidateOnRefresh: true,
 						},
 					});

@@ -1,7 +1,6 @@
 "use client";
 
 import { VelocityText } from "@/components/animations/VelocityText";
-import { GuidedExperience } from "@/components/layout/GuidedExperience";
 import { Header } from "@/components/layout/header";
 import { CurtainFooter } from "@/components/sections/CurtainFooter";
 import { Pillars } from "@/components/sections/Pillars";
@@ -10,16 +9,12 @@ import { Manifesto } from "@/components/sections/Manifesto";
 import { MeetingMoment } from "@/components/sections/MeetingMoment";
 import { ScrubbableHero } from "@/components/sections/ScrubbableHero";
 import { MagneticCursor } from "@/components/ui/MagneticCursor";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/animations/gsap";
 import {
     destroySmoothScroll,
     initSmoothScroll,
 } from "@/lib/animations/smooth-scroll";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -73,46 +68,48 @@ export default function Home() {
 			<MagneticCursor />
 			<Header />
 
-			<GuidedExperience>
-				{/* Section 1: Scrubbable Hero */}
-				<div className="relative z-10" data-section="hero">
-					<ScrubbableHero />
-				</div>
+			<div className="relative min-h-[400vh] bg-neutral-950">
+				<div className="relative z-10">
+					{/* Section 1: Scrubbable Hero */}
+					<div className="relative z-10" data-section="hero">
+						<ScrubbableHero />
+					</div>
 
-				{/* Section 2: Velocity Text Transition */}
-				<div data-section="velocity">
-					<VelocityText baseVelocity={0.5}>
-						Innovate • Create • Collaborate •
-					</VelocityText>
-				</div>
+					{/* Section 2: Velocity Text Transition */}
+					<div data-section="velocity">
+						<VelocityText baseVelocity={0.5}>
+							Innovate • Create • Collaborate •
+						</VelocityText>
+					</div>
 
-				{/* Section 2.5: Manifesto */}
-				<div data-section="manifesto">
-					<Manifesto />
-				</div>
+					{/* Section 2.5: Manifesto */}
+					<div data-section="manifesto">
+						<Manifesto />
+					</div>
 
-				{/* Section 3: Pillars (What we do) */}
-				<div data-section="features">
-					<Pillars />
-				</div>
+					{/* Section 3: Pillars (What we do) */}
+					<div data-section="features">
+						<Pillars />
+					</div>
 
-				{/* Section 4: Community Showcase */}
-				<div data-section="community">
-					<CommunityShowcase />
-				</div>
+					{/* Section 4: Community Showcase */}
+					<div data-section="community">
+						<CommunityShowcase />
+					</div>
 
-				{/* Section 5: Meeting Moment */}
-				<div data-section="meeting">
-					<MeetingMoment />
-				</div>
+					{/* Section 5: Meeting Moment */}
+					<div data-section="meeting">
+						<MeetingMoment />
+					</div>
 
-				{/* Section 6: Curtain Footer */}
-				<div className="relative z-20 rounded-b-[3rem] shadow-2xl mb-[80vh]" data-section="contact">
-					{/* This div acts as the "curtain" that pulls up to reveal the footer */}
-					<div className="h-20" />
+					{/* Section 6: Curtain Footer */}
+					<div className="relative z-20 rounded-b-[3rem] shadow-2xl mb-[80vh]" data-section="contact">
+						{/* This div acts as the "curtain" that pulls up to reveal the footer */}
+						<div className="h-20" />
+					</div>
+					<CurtainFooter />
 				</div>
-				<CurtainFooter />
-			</GuidedExperience>
+			</div>
 		</div>
 	);
 }
