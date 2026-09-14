@@ -1,3 +1,5 @@
+import type { MeetingState } from "@/lib/meeting";
+
 /**
  * Common types used throughout the RCC ACM website
  */
@@ -196,21 +198,16 @@ export interface CountdownTime {
 }
 
 export interface ClubMeeting {
-	nextMeetingDate: Date;
+	/** Null until the component mounts, so server and client markup match. */
+	now: Date | null;
+	meeting: MeetingState | null;
+	nextMeetingDate: Date | null;
 	isActive: boolean;
 	timeUntilNext: CountdownTime;
 	status: MeetingStatus;
 }
 
-export type MeetingStatus = "upcoming" | "in_progress" | "ended";
-
-export interface CountdownConfig {
-	meetingDay: number; // 0-6, where 4 = Thursday
-	meetingHour: number; // 24-hour format
-	meetingMinute: number;
-	durationMinutes: number;
-	timezone: string;
-}
+export type MeetingStatus = "upcoming" | "in_progress" | "break";
 
 // Theme and styling types
 export type Theme = "light" | "dark" | "system";

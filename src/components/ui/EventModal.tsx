@@ -1,6 +1,7 @@
 "use client";
 
 import { useClubMeeting } from "@/hooks/useClubMeeting";
+import { MEETING, MEETING_WEEKDAY, formatDateKey, meetingHours, meetingLength } from "@/lib/meeting";
 import { MeetingStatus } from "@/types";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import {
@@ -23,7 +24,7 @@ interface EventModalProps {
 }
 
 export function EventModal({ isOpen, onClose }: EventModalProps) {
-	const { timeUntilNext: timeLeft, status, nextMeetingDate } = useClubMeeting();
+	const { timeUntilNext: timeLeft, status, meeting } = useClubMeeting();
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
@@ -43,14 +44,8 @@ export function EventModal({ isOpen, onClose }: EventModalProps) {
 		};
 	}, [isOpen]);
 
-	const formatMeetingDate = (date: Date) =>
-		date.toLocaleDateString("en-US", {
-			weekday: "long",
-			month: "long",
-			day: "numeric",
-			year: "numeric",
-			timeZone: "America/Los_Angeles",
-		});
+	const nextDate =
+		meeting && meeting.kind !== "break" ? formatDateKey(meeting.date, "long") : "No meetings until next term";
 
 	const getStatusInfo = (status: MeetingStatus) => {
 		switch (status) {
@@ -68,9 +63,9 @@ export function EventModal({ isOpen, onClose }: EventModalProps) {
 					bgColor: "bg-live/10",
 					borderColor: "border-live/25",
 				};
-			case "ended":
+			case "break":
 				return {
-					title: "Meeting Ended",
+					title: "On Break",
 					color: "text-text-muted",
 					bgColor: "bg-white/5",
 					borderColor: "border-border",
@@ -163,7 +158,7 @@ export function EventModal({ isOpen, onClose }: EventModalProps) {
 									</div>
 
 									{/* Countdown */}
-									{status !== "ended" && (
+									{status !== "break" && (
 										<div className="rounded-2xl border border-border bg-white/5 p-4">
 											<h4 className="mb-3 font-semibold text-text">
 												{status === "in_progress"
@@ -179,7 +174,7 @@ export function EventModal({ isOpen, onClose }: EventModalProps) {
 														</span>
 													</span>
 													<p className="text-sm text-text-muted">
-														Come find us in A-210.
+														Come find us in {MEETING.room}.
 													</p>
 												</div>
 											) : (
@@ -213,18 +208,18 @@ export function EventModal({ isOpen, onClose }: EventModalProps) {
 											{[
 												{
 													icon: Calendar,
-													title: formatMeetingDate(nextMeetingDate),
-													desc: "Every Thursday",
+													title: nextDate,
+													desc: `Every ${MEETING_WEEKDAY}`,
 												},
 												{
 													icon: Clock,
-													title: "12:50 - 1:50 PM PT",
-													desc: "1 hour",
+													title: `${meetingHours()} PT`,
+													desc: meetingLength(),
 												},
 												{
 													icon: MapPin,
-													title: "A-210 Simulation Lab",
-													desc: "Riverside City College",
+													title: `${MEETING.room} ${MEETING.roomName}`,
+													desc: `${MEETING.building}, ${MEETING.campus}`,
 												},
 												{
 													icon: Users,
