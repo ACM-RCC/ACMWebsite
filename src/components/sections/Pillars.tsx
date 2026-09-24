@@ -8,6 +8,16 @@ import { useRef } from "react";
 
 const KICKER = "// why join";
 const BUILD_COMMENT = "// turn ideas into a portfolio";
+/**
+ * Pacing of the pinned stretch, in units of the horizontal distance. LEAD and TAIL are
+ * still scroll before and after the run; the run eases in over RAMP and out over RAMP,
+ * covering half that share of track at each end, and moves 1:1 with scroll between.
+ * TAIL outlasts the scrub lag so the last card visibly lands before the pin releases.
+ */
+const LEAD = 0.06;
+const RAMP = 0.12;
+const TAIL = 0.16;
+const RUN = 1 + RAMP; // two ramps at half speed plus the 1:1 middle
 
 const PILLARS = [
 	{
@@ -48,22 +58,30 @@ export function Pillars() {
 					const section = sectionRef.current;
 					if (!track || !section) return;
 
-					const distance = track.scrollWidth - window.innerWidth;
-					if (distance <= 0) return;
+					// Measured on every refresh so a resize keeps the track and pin in step.
+					const distance = () => track.scrollWidth - window.innerWidth;
+					if (distance() <= 0) return;
 
-					gsap.to(track, {
-						x: -distance,
-						ease: "none",
+					// The section lands and settles before the track moves, eases into and out
+					// of the horizontal run, and holds on the last card before releasing.
+					// power1.in over RAMP ends at exactly 1:1 speed and power1.out starts there,
+					// so the track's speed never jumps.
+					const edge = RAMP / 2;
+					const tl = gsap.timeline({
 						scrollTrigger: {
 							trigger: section,
 							start: "top top",
-							end: `+=${distance}`,
+							end: () => `+=${distance() * (LEAD + RUN + TAIL)}`,
 							scrub: SCRUB.normal,
 							pin: true,
-							anticipatePin: 1,
 							invalidateOnRefresh: true,
 						},
 					});
+					tl.to({}, { duration: LEAD })
+						.fromTo(track, { x: 0 }, { x: () => -distance() * edge, ease: "power1.in", duration: RAMP })
+						.to(track, { x: () => -distance() * (1 - edge), ease: "none", duration: 1 - RAMP })
+						.to(track, { x: () => -distance(), ease: "power1.out", duration: RAMP })
+						.to({}, { duration: TAIL });
 				},
 				reduced: () => {
 					// No pin/scrub: the row becomes natively scrollable horizontally.

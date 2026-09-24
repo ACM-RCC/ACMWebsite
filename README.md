@@ -18,8 +18,8 @@ people to the community. It is a single route (`/`) made of scroll-driven sectio
 2. **Velocity marquee** - a scrolling "Innovate / Create / Collaborate" band.
 3. **Manifesto** - a held typographic statement (SplitText line reveal).
 4. **Pillars** - what the club does: Build, Compete, Learn, Connect (horizontal scroll).
-5. **Community** - the live video playing inside a "COMMUNITY" wordmask, opening to full-bleed.
-6. **Meeting moment** - a live countdown to the next weekly meeting, with the details and an add-to-calendar link.
+5. **Community** - the live video playing inside a "COMMUNITY" wordmask; scrolling flies into the I until the video is full-bleed, then holds on the invite.
+6. **Meeting moment** - the next weekly meeting, with a live ruler of the week ahead, the details, and an add-to-calendar link.
 7. **Footer** - the closing "Let's build" curtain and the invite to Discord.
 
 The chapter's real hub is its Discord. The site's job is to make that obvious.
@@ -68,10 +68,11 @@ src/
 ├── components/
 │   ├── sections/            # the scroll sections (Manifesto, Pillars, CommunityShowcase, MeetingMoment, ...)
 │   ├── animations/          # small motion helpers
-│   ├── layout/              # header, guided experience
+│   ├── layout/              # header
 │   └── ui/                  # event modal + provider, primitives
-├── hooks/                   # useClubMeeting, useCountdown, usePrefersReducedMotion
+├── hooks/                   # useClubMeeting, usePrefersReducedMotion
 ├── lib/
+│   ├── meeting.ts           # meeting schedule, term dates, and time-zone-safe time math
 │   └── animations/          # gsap setup, motion tokens, reduced-motion helper, smooth scroll
 └── types/                   # shared TypeScript types
 ```
@@ -113,7 +114,7 @@ domain: [rccacm.com](https://rccacm.com).
 
 - **Discord**: https://discord.gg/fM2HbsJyBG
 - **Instagram**: [@rcc.acm](https://www.instagram.com/rcc.acm/)
-- **Meetings**: Thursdays 12:50-1:50 PM in A-210 Simulation Lab, Riverside City College.
+- **Meetings**: Thursdays 1:30-2:30 PM in the A-210 Simulation Lab (BLCIS), Riverside City College.
 
 ## License
 

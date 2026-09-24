@@ -2,6 +2,7 @@
 
 import {
 	gsap,
+	ScrollTrigger,
 	SplitText,
 	useGSAP,
 } from "@/lib/animations/gsap";
@@ -11,6 +12,8 @@ import { useRef } from "react";
 
 const KICKER = "// our mission";
 const STATEMENT = "Curiosity becomes code. Students become engineers.";
+/** Hold after the reveal, as a share of the reveal's length (0.75 = hold 43% of the pin). */
+const HOLD_SHARE = 0.75;
 
 /**
  * Manifesto beat. One held, cinematic typographic statement.
@@ -51,27 +54,39 @@ export function Manifesto() {
 						},
 					});
 
-					// Lines rise out of their masks as you scroll through the pin.
+					// Lines rise out of their masks as you scroll through the pin, then the
+					// finished statement holds so it reads before the section releases.
 					SplitText.create(headingRef.current, {
 						type: "lines",
 						mask: "lines",
 						autoSplit: true,
 						aria: "none", // a11y handled by the sr-only layer below
-						onSplit: (self) =>
-							gsap.from(self.lines, {
+						onSplit: (self) => {
+							const tl = gsap.timeline({
+								scrollTrigger: {
+									trigger: section,
+									start: "top top",
+									end: "+=140%",
+									scrub: SCRUB.normal,
+									pin: true,
+								},
+							});
+							tl.from(self.lines, {
 								yPercent: 110,
 								duration: DURATION.normal,
 								stagger: STAGGER.slow,
 								ease: EASE.premium,
-								scrollTrigger: {
-									trigger: section,
-									start: "top top",
-									end: "+=80%",
-									scrub: SCRUB.normal,
-									pin: true,
-									anticipatePin: 1,
-								},
-							}),
+							});
+							tl.to({}, { duration: tl.duration() * HOLD_SHARE });
+
+							// SplitText waits for the webfont and re-splits on resize, so this pin can
+							// be created after the pinned sections below it. Triggers refresh in
+							// creation order, so without a re-sort those sections are measured without
+							// this pin's spacing and pin early, over the top of this one.
+							ScrollTrigger.sort();
+							ScrollTrigger.refresh();
+							return tl;
+						},
 					});
 				},
 			});
