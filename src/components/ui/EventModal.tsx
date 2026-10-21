@@ -246,7 +246,7 @@ export function EventModal({ isOpen, onClose }: EventModalProps) {
 												<Clock className="w-5 h-5 text-neutral-500 dark:text-neutral-400" />
 												<div>
 													<p className="font-medium text-neutral-900 dark:text-white">
-														12:50 - 1:50 PM PST
+														1:30 - 2:30 PM PT
 													</p>
 													<p className="text-sm text-neutral-500 dark:text-neutral-400">
 														1 hour duration

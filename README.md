@@ -324,7 +324,7 @@ npm run format
 - **Discord**: [RCC ACM Server](https://discord.gg/fM2HbsJyBG)
 - **Instagram**: [@rcc.acm](https://www.instagram.com/rcc.acm/)
 - **GitHub**: [github.com/rcc-acm](https://github.com/rcc-acm)
-- **Meetings**: Every Thursday 12:50-1:50 PM in A-210 Simulation Lab
+- **Meetings**: Every Thursday 1:30-2:30 PM in A-210 Simulation Lab
 
 ### Development Team
 

@@ -35,7 +35,7 @@ export function CurtainFooter() {
 					<div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-black/60 font-medium text-sm md:text-base">
 						<div>
 							<h4 className="text-black font-bold mb-2">Meeting</h4>
-							<p>Thursdays 12:50 PM</p>
+							<p>Thursdays 1:30 PM</p>
 							<p>A-210 Simulation Lab</p>
 						</div>
 						<div>
