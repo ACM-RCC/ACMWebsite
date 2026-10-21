@@ -4,9 +4,9 @@ import { useCountdown } from "./useCountdown";
 
 const MEETING_CONFIG: CountdownConfig = {
 	meetingDay: 4, // Thursday (0 = Sunday, 4 = Thursday)
-	meetingHour: 12, // 12:50 PM = 12 in 24-hour format
-	meetingMinute: 50,
-	durationMinutes: 60, // Meeting lasts 1 hour (12:50 - 1:50)
+	meetingHour: 13, // 1:30 PM = 13 in 24-hour format
+	meetingMinute: 30,
+	durationMinutes: 60, // Meeting lasts 1 hour (1:30 - 2:30)
 	timezone: "America/Los_Angeles", // PST/PDT
 };
 
