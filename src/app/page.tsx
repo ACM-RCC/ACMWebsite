@@ -4,10 +4,9 @@ import { VelocityText } from "@/components/animations/VelocityText";
 import { GuidedExperience } from "@/components/layout/GuidedExperience";
 import { Header } from "@/components/layout/header";
 import { CurtainFooter } from "@/components/sections/CurtainFooter";
-import { Pillars } from "@/components/sections/Pillars";
-import { CommunityShowcase } from "@/components/sections/CommunityShowcase";
-import { Manifesto } from "@/components/sections/Manifesto";
-import { MeetingMoment } from "@/components/sections/MeetingMoment";
+import { HorizontalFeatures } from "@/components/sections/HorizontalFeatures";
+import { ParallaxCommunity } from "@/components/sections/ParallaxCommunity";
+import { PinZoomText } from "@/components/sections/PinZoomText";
 import { ScrubbableHero } from "@/components/sections/ScrubbableHero";
 import { MagneticCursor } from "@/components/ui/MagneticCursor";
 import {
@@ -38,10 +37,9 @@ export default function Home() {
 			const sections = [
 				{ id: "hero", color: "#0a0a0a" }, // Neutral-950
 				{ id: "velocity", color: "#ff4d00" }, // Racing Orange
-				{ id: "manifesto", color: "#0a0a0a" }, // Neutral-950
+				{ id: "pinzoom", color: "#ffffff" }, // White for contrast
 				{ id: "features", color: "#0a0a0a" },
 				{ id: "community", color: "#171717" }, // Neutral-900
-				{ id: "meeting", color: "#0a0a0a" }, // Neutral-950
 				{ id: "contact", color: "#ff4d00" },
 			];
 
@@ -86,27 +84,22 @@ export default function Home() {
 					</VelocityText>
 				</div>
 
-				{/* Section 2.5: Manifesto */}
-				<div data-section="manifesto">
-					<Manifesto />
+				{/* Section 2.5: Pin & Zoom Text */}
+				<div data-section="pinzoom">
+					<PinZoomText />
 				</div>
 
-				{/* Section 3: Pillars (What we do) */}
+				{/* Section 3: Horizontal Scroll Features */}
 				<div data-section="features">
-					<Pillars />
+					<HorizontalFeatures />
 				</div>
 
-				{/* Section 4: Community Showcase */}
+				{/* Section 4: Parallax Community */}
 				<div data-section="community">
-					<CommunityShowcase />
+					<ParallaxCommunity />
 				</div>
 
-				{/* Section 5: Meeting Moment */}
-				<div data-section="meeting">
-					<MeetingMoment />
-				</div>
-
-				{/* Section 6: Curtain Footer */}
+				{/* Section 5: Curtain Footer */}
 				<div className="relative z-20 rounded-b-[3rem] shadow-2xl mb-[80vh]" data-section="contact">
 					{/* This div acts as the "curtain" that pulls up to reveal the footer */}
 					<div className="h-20" />

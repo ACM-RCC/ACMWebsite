@@ -69,6 +69,8 @@ export function GuidedExperience({ children }: GuidedExperienceProps) {
 
 	return (
 		<div ref={containerRef} className="relative min-h-[400vh] bg-neutral-950">
+			{/* Video Stashed for Text Focus */}
+			{/* <VideoBackground /> */}
 			<div className="relative z-10">{children}</div>
 		</div>
 	);
